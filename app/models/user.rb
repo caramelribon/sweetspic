@@ -5,4 +5,6 @@ class User < ApplicationRecord
     validates :avater, presence: false
     mount_uploader :avater, AvaterUploader
     has_secure_password
+    
+    has_many :posts
 end
