@@ -12,10 +12,10 @@
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Photo  <span class="badge bg-secondary"><%= @count_posts %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Photos  <span class="badge bg-secondary"><%= @count_posts %></span></a></li>
       <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge bg-secondary"><%= @count_followings %></span></a></li>
       <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge bg-secondary"><%= @count_followers %></span></a></li>
     </ul>
-    <%= render 'posts/posts', posts: @posts %>
+    <%= render 'users', users: @followers %>
   </div>
 </div>
