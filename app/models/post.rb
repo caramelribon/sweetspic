@@ -6,4 +6,6 @@ class Post < ApplicationRecord
   validates :location, presence: true, length: { maximum: 50 }
   validates :text, presence: false, length: { maximum: 100 }
   mount_uploader :img, ImgUploader
+  
+  has_many :favorites, dependent: :destroy
 end

@@ -1,21 +1,31 @@
-<div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
-      </div>
-      <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
-      </div>
+<div class="m-3 text-center">
+  <% if @user.avater.present? %>
+    <div>
+      <%= image_tag @user.avater.url, size: "350x350" %>
     </div>
-    <%= render 'relationships/follow_button', user: @user %>
-  </aside>
-  <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Photo  <span class="badge bg-secondary"><%= @count_posts %></span></a></li>
-      <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge bg-secondary"><%= @count_followings %></span></a></li>
-      <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge bg-secondary"><%= @count_followers %></span></a></li>
-    </ul>
-    <%= render 'posts/posts', posts: @posts %>
+    <% else %>
+      <%= image_tag "sample.jpeg", id: :img_prev %>
+    <% end %>
+</div>
+<div class="text-center">
+    <h3><%= @user.name %></h3>
+</div>
+<div class=row>
+  <div class="offset-7 col-3">
+      <%= render 'relationships/follow_button', user: @user %>
+      <%= render 'edit_button', user: @user %>
   </div>
+</div>
+</div>
+<div class="text-center mb-5">
+  <p><%= @user.introduction %></p>
+</div>
+<div class=mx-5>
+  <ul class="nav nav-tabs nav-justified mb-3">
+  <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Photo  <span class="badge bg-secondary"><%= @count_posts %></span></a></li>
+  <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge bg-secondary"><%= @count_followings %></span></a></li>
+  <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge bg-secondary"><%= @count_followers %></span></a></li>
+  <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Favorites  <span class="badge bg-secondary"><%= @count_favorites %></span></a></li>
+  </ul>
+  <%= render 'posts/posts', posts: @posts %>
 </div>

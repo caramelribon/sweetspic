@@ -1,2 +1,48 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+  <div class="py-5 bg-light">
+    <%= form_with(model: @user) do |f| %>
+      <div class="row align-items-center justify-content-around">
+        <div class="col-md-6">
+          <div class="preview-area m-5">
+            <%= f.file_field :avater, id: :user_avater %>
+            <% if @user.avater.present? %>
+              <div class="preview">
+                <%= image_tag @user.avater, id: :img_prev %>
+              </div>
+            <% else %>
+              <%= image_tag "sample.jpeg", id: :img_prev %>
+            <% end %>
+            <script type="text/javascript">
+              $(function() {
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                $('#img_prev').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $("#user_avater").change(function(){
+                    readURL(this);
+                });
+              });
+            </script>
+          </div>
+          <div class="text-center">
+              <h3><%= @user.name %></h3>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="m-5">
+            <%= f.label :introduction, 'Introduction' %>
+            <div class="d-flex align-items-center justify-content-center">
+              <%= f.text_area :introduction, class: 'form-control', rows: 7 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center"> 
+        <%= f.submit 'Update', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>

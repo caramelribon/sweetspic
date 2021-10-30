@@ -1,0 +1,35 @@
+<div class="texts-wrapper">
+  <div class="contents-title text-center">
+    <h1>投稿詳細</h1>
+  </div>
+</div>
+<div class="py-5 bg-light">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="m-5">
+          <div>
+            <%= image_tag @post.img.url, size: "350x350" %>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="m-5">
+        <h4>Genre</h4>
+        <p class="m-2"><%= @post.genre %></p>
+      </div>
+      <div class="m-5">
+        <h4>Location</h4>
+        <p class="m-2"><%= @post.location %></p>
+      </div>
+      <div class="m-5">
+        <h4>Text</h4>
+        <p class="m-2"><%= @post.text %></p>
+      </div>
+      <div class="text-center m-2">
+        <%if current_user == @post.user %>
+          <%= link_to 'Delete', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

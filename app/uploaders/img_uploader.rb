@@ -44,4 +44,8 @@ class ImgUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
+  def default_url
+    'sample.jpeg'
+  end
 end

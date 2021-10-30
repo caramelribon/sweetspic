@@ -28,9 +28,18 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_edit_params)
+        flash[:success] = "Profileは正常にUpdateされました"
+        redirect_to users_url
+    else
+        flash.now[:danger] = "ProfileはUpdateされませんでした"
+        render :edit
+    end
   end
   
   def followings
@@ -45,9 +54,23 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def likes
+    #loginしているuserのidを取得
+    @user = User.find(params[:id])
+    #そのuserがフォローしている人たちを取得して、一覧表示
+    @pagy,@likes = pagy(@user.favorited_posts.order(created_at: :desc))
+    #フォローしている人たちの人数をカウント
+    counts(@user)
+  end
+  
   private
   
   def user_params
-    prams.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+  
+  def user_edit_params
+    params.require(:user).permit(:avater, :introduction)
+  end
+  
 end

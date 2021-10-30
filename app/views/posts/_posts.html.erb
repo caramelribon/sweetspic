@@ -1,23 +1,27 @@
 <% if posts.any? %>
-  <ul class="list-unstyled mt-2">
+<div class="row">
     <% posts.each do |post| %>
-      <li class="d-flex">
-        <img class="rounded me-2 mb-5" src="<%= gravatar_url(post.user, { size: 64 }) %>" alt="">
-        <div>
-          <div>
-            <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none" %> <span class="text-muted">posted at <%= post.created_at %></span>
-          </div>
-          <div>
-            <p><%= post.content %></p>
-          </div>
-          <div>
-            <% if current_user == post.user %>
-              <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-            <% end %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-post shadow bg-white rounded">
+          <%= image_tag post.img.url, size: "350x350" %>
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="p-1 flex-grow-1">
+                <h3><%= link_to post.user.name, user_path(post.user), class: "text-decoration-none" %></h3>
+              </div>
+              <div class="p-1">
+                <%= link_to 'View', post, class: "btn btn-outline-secondary btn-sm" %>
+              </div>
+              <div class="p-1">
+                <%= render 'favorites/favorite_button', post: post %>
+              </div>
+            </div>
           </div>
         </div>
-      </li>
+      </div>
     <% end %>
-  </ul>
+</div>
+<div class="pagination">
   <%== pagy_bootstrap_nav(@pagy) %>
+</div>
 <% end %>

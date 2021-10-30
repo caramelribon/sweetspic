@@ -1,16 +1,60 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-sm-4">
-      <%= form_with(model: @post) do |f| %>
-        <div class="mb-3">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+<div class="texts-wrapper">
+  <div class="contents-title text-center m-5">
+    <h1>投稿一覧</h1>
+  </div>
+    <%= render 'posts/posts', posts: @posts %>
+</div>
+  <div class="py-5 bg-light">
+    <%= form_with(model: @post) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="preview-area m-5">
+            <%= f.file_field :img, id: :post_img %>
+            <% if @post.img.present? %>
+              <div class="preview">
+                <%= image_tag @post.img, id: :img_prev %>
+              </div>
+            <% else %>
+              <%= image_tag "sample.jpeg", id: :img_prev %>
+            <% end %>
+            <script type="text/javascript">
+              $(function() {
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                $('#img_prev').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $("#post_img").change(function(){
+                    readURL(this);
+                });
+              });
+            </script>
+          </div>
         </div>
-        <%= f.submit 'Post', class: 'btn btn-primary w-100' %>
-      <% end %>
-    </aside>
-    <div class="col-sm-8">
-      <%= render 'posts/posts', posts: @posts %>
-    </div>
+        <div class="col-md-6">
+          <div class="m-5">
+          <%= f.label :genre, 'Genre' %>
+          <%= f.text_field :genre, class: 'form-control' %>
+          </div>
+          <div class="m-5">
+          <%= f.label :location, 'Location' %>
+          <%= f.text_field :location, class: 'form-control' %>
+          </div>
+          <div class="m-5">
+          <%= f.label :text, 'Text' %>
+          <%= f.text_area :text, class: 'form-control', rows: 5 %>
+          </div>
+        </div>
+      </div>
+      <div class="text-center"> 
+        <%= f.submit 'Post', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
 <% else %>
   <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
@@ -19,4 +63,22 @@
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
+  <section class="text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="pb-md-5 fw-light">Sweets picとは?</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="text-muted">スイーツの写真を投稿して共有できるWebアプリケーションです。</p>
+        </div>
+        <div class="col-md-4">
+          <p class="text-muted">登録しているユーザをフォローしたり、いいなと思う投稿にはいいねができます。また、各ジャンルごとのいいねランキングも見れます。</p>
+        </div>
+        <div class="col-md-4">
+          <p class="text-muted">投稿には、ジャンル(ケーキorクッキーorアイスorその他)と、そのスイーツのお店が書かれているので、どこのお店のスイーツかがわかります♪</p>
+        </div>
+      </div>
+    </div>
+  </section>
 <% end %>

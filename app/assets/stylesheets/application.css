@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+ 
+.card-post {
+  margin: 0 auto 60px;
+  max-width: 350px;
+  height: 420px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.preview-area {
+  text-align: center;
+}
+
+.preview{
+  width: 50%;
+  height: 50%;
+}
+
+.user-button{
+  display: inline-block;
+}
