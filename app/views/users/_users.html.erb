@@ -4,11 +4,9 @@
       <div class="col-12 col-md-6 col-lg-4">
         <div class="card-user shadow bg-white rounded">
           <% if user.avater.present? %>
-            <div>
               <%= image_tag user.avater.url, size: "350x350" %>
-            </div>
             <% else %>
-              <%= image_tag "sample.jpeg" %>
+              <%= image_tag "/sample.jpeg" %>
             <% end %>
           <div class="card-body">
             <div class="text-center">
