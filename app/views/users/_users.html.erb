@@ -6,7 +6,7 @@
           <% if user.avater.present? %>
               <%= image_tag user.avater.url, size: "350x350" %>
             <% else %>
-              <%= image_tag "/sample.jpeg" %>
+              <%= image_tag "/sample.jpeg", size: "350x350" %>
             <% end %>
           <div class="card-body">
             <div class="text-center">
