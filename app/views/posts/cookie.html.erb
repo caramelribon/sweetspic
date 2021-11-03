@@ -1,0 +1,18 @@
+<div class="texts-wrapper">
+  <div class="contents-title text-center m-5">
+    <h1>いいねランキング</h1>
+  </div>
+  <div class=mx-5>
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="<%= ranking_path %>" class="nav-link">All</a></li>
+      <li class="nav-item"><a href="<%= ranking_cake_path %>" class="nav-link">Cake</a></li>
+      <li class="nav-item"><a href="<%= ranking_cookie_path %>" class="nav-link">Cookie</a></li>
+      <li class="nav-item"><a href="<%= ranking_ice_path %>" class="nav-link">Ice</a></li>
+      <li class="nav-item"><a href="<%= ranking_others_path %>" class="nav-link">Others</a></li>
+    </ul>
+    <div class="contents-title text-center m-5">
+      <h2>Cookie</h2>
+    </div>
+    <%= render 'ranking', posts: @cookie_ranks %>
+  </div>
+</div>

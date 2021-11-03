@@ -1,5 +1,5 @@
 <div class="texts-wrapper">
-  <div class="contents-title text-center">
+  <div class="contents-title text-center m-3">
     <h1>投稿詳細</h1>
   </div>
 </div>
@@ -7,8 +7,11 @@
   <div class="row">
     <div class="col-md-6">
       <div class="m-5">
-          <div>
+          <div class="text-center">
             <%= image_tag @post.img.url, size: "350x350" %>
+            <div class="text-center m-3">
+              <h1><%= link_to @post.user.name, user_path(@post.user), class: "text-decoration-none" %></h1>
+            </div>
           </div>
       </div>
     </div>
@@ -25,11 +28,11 @@
         <h4>Text</h4>
         <p class="m-2"><%= @post.text %></p>
       </div>
-      <div class="text-center m-2">
+    </div>
+    <div class="text-center">
         <%if current_user == @post.user %>
           <%= link_to 'Delete', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'%>
         <% end %>
       </div>
-    </div>
   </div>
 </div>

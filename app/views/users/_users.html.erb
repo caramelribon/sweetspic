@@ -2,13 +2,13 @@
   <div class="row">
     <% users.each do |user| %>
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow bg-white rounded">
+        <div class="card-user shadow bg-white rounded">
           <% if user.avater.present? %>
             <div>
               <%= image_tag user.avater.url, size: "350x350" %>
             </div>
             <% else %>
-              <%= image_tag "sample.jpeg", id: :img_prev %>
+              <%= image_tag "sample.jpeg" %>
             <% end %>
           <div class="card-body">
             <div class="text-center">

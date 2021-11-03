@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    before_save { self.email.downcase! }
     validates :name, presence: true, length: { maximum: 50}
     validates :email, presence: true, length: { maximum: 50}, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
     validates :introduction, presence: false, length: { maximum: 100 }
@@ -31,11 +32,11 @@ class User < ApplicationRecord
     has_many :favorited_posts, through: :favorites, source: :post
     
     def favorite(post)
-        self.favorites.find_or_create_by(post_id: post_id)
+        self.favorites.find_or_create_by(post_id: post.id)
     end
     
     def unfavorite(post)
-        favorite = self.favorites.find_by(post_id: post_id)
+        favorite = self.favorites.find_by(post_id: post.id)
         favorite.destroy if favorite
     end
     

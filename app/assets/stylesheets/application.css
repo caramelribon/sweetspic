@@ -20,6 +20,12 @@
   height: 420px;
 }
 
+.card-user {
+  margin: 0 auto 60px;
+  max-width: 350px;
+  height: 450px;
+}
+
 .pagination {
   justify-content: center;
 }
@@ -28,11 +34,122 @@
   text-align: center;
 }
 
-.preview{
-  width: 50%;
-  height: 50%;
+.preview-size{
+  height: 350px;
+  width: 350px;
 }
 
 .user-button{
   display: inline-block;
+}
+
+.ranking{
+  position: relative;
+  text-align: center;
+}
+
+.ranking p {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  font-size: 3em;
+  margin:0;
+  padding:0;
+}
+.ranking i{
+  font-size: 7.5em;
+}
+
+.circle-group-one{
+   position: relative;
+   text-align: center;
+   width: 300px;
+   height: 300px;
+}
+
+.circle-group-one p {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.circle-one{
+  width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	background: #f0f8ff;
+}
+
+.circle-group-two{
+   position: relative;
+   text-align: center;
+   width: 300px;
+   height: 300px;
+}
+
+.circle-group-two p {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.circle-two{
+  width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	background: #e6e6fa;
+}
+
+.circle-group-three{
+   position: relative;
+   text-align: center;
+   width: 300px;
+   height: 300px;
+}
+
+.circle-group-three p {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.circle-three{
+  width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	background: #b0c4de;
+}
+.favorite_button{
+  font-size:1.5em;
+  color: #808080;
+}
+
+.unfavorite_button{
+  font-size:1.5em;
+  color:  #e54747;
 }
