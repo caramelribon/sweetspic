@@ -49,7 +49,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: sweetspic_production
   username: sweetspic
   password: <%= ENV['SWEETSPIC_DATABASE_PASSWORD'] %>
