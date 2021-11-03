@@ -29,15 +29,17 @@ class PostsController < ApplicationController
   end
   
   def cake
-    @cake_ranks = Post.joins(:favorites).group("favorites.post_id").where(genre: 'cake').order('count(post_id) desc')
+    @all= Post.find(Favorite.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @cake_ranks = @all.where(genre: 'cake').limit(3)
   end
   
   def cookie
-    @cookie_ranks = Post.joins(:favorites).group("favorites.post_id").where(genre: 'cookie').order('count(post_id) desc')
+    cookie = Post.where(genre: 'cookie')
+    @cookie_ranks = cookie.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
   
   def ice
-    @ice_ranks = Post.joins(:favorites).group("favorites.post_id").where(genre: 'ice').order('count(post_id) desc')
+    @ice_ranks = Post.joins(:favorites).where(genre: 'ice').group("favorites.post_id").order('count(post_id) desc')
   end
   
   def others
